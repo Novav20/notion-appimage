@@ -4,9 +4,13 @@
 
 **THIS IS AN UNOFFICIAL REPACK, USE AT YOUR OWN RISK**
 
-Build the [Notion desktop app](https://www.notion.so/desktop) as [AppImage](https://appimage.org/) using [electron-builder](https://www.electron.build/).
+> **Note**: This is a personal fork of [kidonng/notion-appimage](https://github.com/kidonng/notion-appimage) with fixes to make it work on Manjaro Linux. The original build script had issues that I didn't know how to fix, but with help from Antigravity AI, the build process was updated to work correctly on my system.
+>
+> This fork includes manual AppImage construction to bypass `electron-builder` dependency issues. I won't be updating this repository unless something breaks with the installed application.
 
-> **Status: MVP**. Usable but likely needs patching to be decent looking (in Notion sense).
+Build the [Notion desktop app](https://www.notion.so/desktop) as [AppImage](https://appimage.org/).
+
+> **Status**: Working on Manjaro Linux with manual AppImage packaging.
 
 ## Usage
 
