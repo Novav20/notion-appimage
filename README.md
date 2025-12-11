@@ -90,7 +90,11 @@ rm -rf build/
 
 ### Why this over alternatives (e.g. web version)?
 
-[Please read my Reddit post.](https://www.reddit.com/r/Notion/comments/17f8jhg/notion_desktop_app_on_linux_unofficial/)
+The desktop app provides essential features not available in the web version:
+
+- **Tabs**: Navigate between multiple Notion pages in tabs, just like a browser
+- **Offline availability**: Access your workspace without an internet connection
+- **Native desktop integration**: Better system integration and keyboard shortcuts
 
 ### Why AppImage?
 
