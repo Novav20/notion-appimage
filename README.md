@@ -12,28 +12,79 @@ Build the [Notion desktop app](https://www.notion.so/desktop) as [AppImage](http
 
 > **Status**: Working on Manjaro Linux with manual AppImage packaging.
 
-## Usage
+## Installation
 
-Get the app via [GitHub releases](https://github.com/kidonng/notion-appimage/releases/latest), then launch.
+### Prerequisites
 
-As an AppImage, it requires [FUSE](https://github.com/AppImage/AppImageKit/wiki/FUSE) to run.
+Install required dependencies:
 
----
+```bash
+sudo pacman -S p7zip nodejs npm unzip
+```
 
-To create a shortcut in your application menu:
+### Build the AppImage
 
-- Edit [`assets/Notion.desktop`](assets/Notion.desktop) to point to the AppImage and copy to `~/.local/share/applications`
-- Copy [`assets/icon.png`](assets/icon.png) to `.local/share/icons/hicolor/256x256/apps`
+```bash
+# Clone this repository
+git clone https://github.com/Novav20/notion-appimage.git
+cd notion-appimage
 
-## Build
+# Run the build script
+./build.sh
+```
 
-Prepare dependencies:
+The build will:
+- Download Notion from official source
+- Extract and patch the application
+- Rebuild native modules for Linux
+- Create the AppImage (takes ~2-3 minutes)
 
-- 7zip
-- Node.js & npm
-- Standard Unix tools
+### Install the AppImage
 
-Then run [`build.sh`](build.sh).
+```bash
+# Create directories
+mkdir -p ~/.local/bin ~/.local/share/applications ~/.local/share/icons/hicolor/256x256/apps
+
+# Install AppImage
+cp build/Notion-37.6.0-x86_64.AppImage ~/.local/bin/Notion.AppImage
+chmod +x ~/.local/bin/Notion.AppImage
+
+# Install icon
+cp assets/icon.png ~/.local/share/icons/hicolor/256x256/apps/notion.png
+
+# Create desktop entry
+cat > ~/.local/share/applications/notion.desktop << 'EOF'
+[Desktop Entry]
+Name=Notion
+Comment=All-in-one workspace for notes and collaboration
+Exec=/home/$USER/.local/bin/Notion.AppImage
+Icon=notion
+Type=Application
+Categories=Office;Productivity;
+Terminal=false
+StartupWMClass=Notion
+EOF
+
+# Update desktop database
+chmod +x ~/.local/share/applications/notion.desktop
+update-desktop-database ~/.local/share/applications
+
+# Create terminal shortcut
+ln -sf ~/.local/bin/Notion.AppImage ~/.local/bin/notion
+```
+
+### Launch Notion
+
+- **From app menu**: Search for "Notion"
+- **From terminal**: Type `notion`
+
+### Cleanup (optional)
+
+After installation, you can remove build files:
+
+```bash
+rm -rf build/
+```
 
 ## Q&A
 
