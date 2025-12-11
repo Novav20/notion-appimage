@@ -98,9 +98,7 @@ The desktop app provides essential features not available in the web version:
 
 ### Why AppImage?
 
-I would rather use the web version than other solutions.
-
-If you are on Arch Linux, I recommend [`notion-app-electron`](https://aur.archlinux.org/packages/notion-app-electron) on AUR which is (co-)maintained by me.
+AppImage is a portable format that works across Linux distributions without requiring installation or dependencies. It's self-contained and easy to use - just download, make executable, and run.
 
 ### What about [notion-enhancer](https://github.com/notion-enhancer/notion-repackaged)?
 
